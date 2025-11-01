@@ -7,9 +7,9 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div>
+    <>
       <AppSidebar />
-      {children}
-    </div>
+      <main className="ml-64 bg-gray-50 min-h-svh p-4">{children}</main>
+    </>
   )
 }

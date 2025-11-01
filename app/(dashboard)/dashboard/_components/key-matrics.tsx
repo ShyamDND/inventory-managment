@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import getCurrentUser from '@/utils/auth'
 import { TrendingUpIcon } from 'lucide-react'
 
+export const revalidate = 300
+
 export default async function KeyMatrics() {
   const user = await getCurrentUser()
 

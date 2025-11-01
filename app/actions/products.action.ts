@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import getCurrentUser from '@/utils/auth'
 import { cache } from 'react'
 
 export const getAllProducts = cache(async function (userId: string) {
@@ -8,10 +9,17 @@ export const getAllProducts = cache(async function (userId: string) {
     where: {
       userId,
     },
-    select: {
-      price: true,
-      quantity: true,
-      createdAt: true,
-    },
   })
 })
+
+export const deleteProduct = async (formData: FormData) => {
+  const user = await getCurrentUser()
+  const id = String(formData.get('id')) || ''
+
+  await prisma.product.deleteMany({
+    where: {
+      id: id,
+      userId: user.id,
+    },
+  })
+}

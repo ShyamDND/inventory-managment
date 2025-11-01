@@ -10,11 +10,6 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
-
-type Props = {
-  currentPath: string
-}
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
@@ -34,7 +29,8 @@ export default function AppSidebar() {
       </div>
       <div className="space-y-1">
         {navigation.map((item, key) => {
-          const isActive = currentPath === '/' + item.href
+          const isActive = '/' + currentPath === item.href
+
           return (
             <Link
               key={key}
