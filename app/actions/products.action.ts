@@ -14,6 +14,7 @@ const ProductSchema = z.object({
   sku: z.string().optional(),
   lowStockAt: z.coerce.number().int().min(0).optional(),
 })
+
 export const getAllProducts = cache(async function (userId: string) {
   return await prisma.product.findMany({
     where: {
@@ -33,6 +34,7 @@ export const deleteProduct = async (formData: FormData) => {
     },
   })
 }
+
 export const createProduct = async (formData: FormData) => {
   const user = await getCurrentUser()
 
@@ -45,7 +47,8 @@ export const createProduct = async (formData: FormData) => {
   })
 
   if (!parsed) {
-    throw new Error('Invalid data, Validation failed')
+    // throw new Error('Invalid data, Validation failed')
+    console.log('Invalid data, Validation failed')
   }
 
   try {
@@ -62,6 +65,7 @@ export const createProduct = async (formData: FormData) => {
 
     redirect('/inventory')
   } catch (error) {
-    throw new Error('Failed to create a product')
+    // throw new Error('Failed to create a product')
+    console.log('Failed to create a product', error)
   }
 }

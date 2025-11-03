@@ -2,14 +2,11 @@ import { createProduct } from '@/app/actions/products.action'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import getCurrentUser from '@/utils/auth'
 import Link from 'next/link'
-import React from 'react'
 
 type Props = {}
 
 export default async function AddProductForm({}: Props) {
-  const user = await getCurrentUser()
   return (
     <div className="max-w-xl bg-white rounded-lg border p-6">
       <form className="space-y-4" action={createProduct}>

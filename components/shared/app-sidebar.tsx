@@ -38,7 +38,7 @@ export default function AppSidebar() {
     <div className="relative">
       {isSidebarOpen && (
         <div
-          className="fixed top-0 left-0 w-full h-full inset-0 bg-black/10 z-10"
+          className="fixed md:hidden top-0 left-0 w-full h-full inset-0 bg-black/10 z-10"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
