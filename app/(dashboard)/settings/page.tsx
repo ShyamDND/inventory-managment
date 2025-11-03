@@ -1,8 +1,12 @@
 import { AccountSettings } from '@stackframe/stack'
+import { Metadata } from 'next'
 
-type Props = {}
+export const metadata: Metadata = {
+  title: 'Settings | Stocky - Inventory Management',
+  description: ' Settings | Stocky - Inventory Management',
+}
 
-export default function Page({}: Props) {
+export default function Page() {
   return (
     <div>
       <h1 className="text-2xl font-semibold text-foreground ">Settings</h1>

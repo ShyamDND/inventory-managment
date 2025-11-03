@@ -4,9 +4,13 @@ import StockLevels, { StockLevelsPlaceholder } from './_components/stock-levels'
 import { Suspense } from 'react'
 import ProductsChart from './_components/products-chart'
 import EfficiencyChart from './_components/efficiency-char'
+import { Metadata } from 'next'
 
 export const revalidate = 300
-
+export const metadata: Metadata = {
+  title: 'Dashboard | Stocky - Inventory Management',
+  description: ' Dashboard | Stocky - Inventory Management',
+}
 export default async function Page() {
   return (
     <>

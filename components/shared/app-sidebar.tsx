@@ -8,6 +8,7 @@ import {
   Plus,
   Settings,
   Sidebar,
+  ZapIcon,
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -48,8 +49,8 @@ export default function AppSidebar() {
         )}
       >
         <div className="flex items-center gap-2 mb-4 md:mb-8 border-b border-gray-700 md:p-6 p-3">
-          <ChartBarIncreasing className="size-7" />
-          <span className="font-bold text-lg">Inventory App</span>
+          <ZapIcon className="size-7" />
+          <span className="font-bold text-lg">Stocky</span>
         </div>
         <div className="space-y-1 px-3 md:px-6">
           {navigation.map((item, key) => {

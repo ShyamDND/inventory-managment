@@ -1,5 +1,11 @@
+import { Metadata } from 'next'
 import Table from './_components/table'
 import { Suspense } from 'react'
+
+export const metadata: Metadata = {
+  title: 'Inventory | Stocky - Inventory Management',
+  description: ' Inventory | Stocky - Inventory Management',
+}
 
 export default async function Page({
   searchParams,
