@@ -36,8 +36,8 @@ export default async function Table({ q, page }: Props) {
 
   function getVisiblePages() {
     const delta = 2
-    const range = []
-    const rangeWithDots = []
+    const range: number[] = []
+    const rangeWithDots: any[] = []
 
     for (
       let i = Math.max(2, currentPage - delta);

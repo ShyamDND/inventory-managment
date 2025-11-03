@@ -3,7 +3,7 @@ import ProductChart from './product-chart'
 import { getAllProducts } from '@/app/actions/products.action'
 
 export default async function ProductsChart() {
-  const weeklyProductsData = []
+  const weeklyProductsData: any[] = []
   const now = new Date()
 
   const user = await getCurrentUser()

@@ -1,20 +1,17 @@
 import { getAllProducts } from '@/app/actions/products.action'
 import getCurrentUser from '@/utils/auth'
-import { Product } from '@prisma/client'
 
 export default async function EfficiencyChart() {
   const user = await getCurrentUser()
   const allProducts = await getAllProducts(user.id)
 
-  const inStockCount = allProducts.filter(
-    (p: Product) => Number(p.quantity) > 5
-  ).length
+  const inStockCount = allProducts.filter((p) => Number(p.quantity) > 5).length
   const lowStockCount = allProducts.filter(
-    (p: Product) => Number(p.quantity) <= 5 && Number(p.quantity) >= 1
+    (p) => Number(p.quantity) <= 5 && Number(p.quantity) >= 1
   ).length
 
   const outOfStockCount = allProducts.filter(
-    (p: Product) => Number(p.quantity) === 0
+    (p) => Number(p.quantity) === 0
   ).length
 
   const inStockPercent =
@@ -24,6 +21,10 @@ export default async function EfficiencyChart() {
   const lowStockPercent =
     allProducts.length > 0
       ? Math.round((lowStockCount / allProducts.length) * 100)
+      : 0
+  const outOfStockPercent =
+    allProducts.length > 0
+      ? Math.round((outOfStockCount / allProducts.length) * 100)
       : 0
 
   return (
