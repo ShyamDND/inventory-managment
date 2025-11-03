@@ -18,9 +18,12 @@ export default function Home() {
           >
             Sign In
           </Link>
-          <button className="text-sm border border-gray-200 rounded-xl px-4 py-1.5">
-            Learn No More..
-          </button>
+          <Link
+            href={'/dashboard'}
+            className="text-sm border border-gray-200 rounded-xl px-4 py-1.5"
+          >
+            Dashboard
+          </Link>
         </div>
       </div>
     </div>

@@ -4,11 +4,11 @@ import { Suspense } from 'react'
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>
+  searchParams: Promise<{ q?: string; page?: number }>
 }) {
   const params = await searchParams
-
   const q = (params?.q ?? '').trim()
+  const page = Number(params.page ?? 1)
 
   return (
     <div>
@@ -37,7 +37,7 @@ export default async function Page({
           <div className="h-[400px] bg-gray-500/10 rounded-lg animate-pulse"></div>
         }
       >
-        <Table q={q} />
+        <Table q={q} page={page} />
       </Suspense>
     </div>
   )
