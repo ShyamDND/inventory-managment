@@ -1,5 +1,4 @@
 import AppSidebar from '@/components/shared/app-sidebar'
-import getCurrentUser from '@/utils/auth'
 import React from 'react'
 
 type Props = {
@@ -7,8 +6,6 @@ type Props = {
 }
 
 export default function Layout({ children }: Props) {
-  const user = getCurrentUser()
-
   return (
     <>
       <AppSidebar />
