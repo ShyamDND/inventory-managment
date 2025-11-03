@@ -15,30 +15,28 @@ export default async function Page() {
   return (
     <>
       <Header />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-        <Suspense fallback={<KeyMatricsPlaceholder />}>
-          <KeyMatrics />
-        </Suspense>
+      <Suspense fallback={<KeyMatricsPlaceholder />}>
+        <KeyMatrics />
+      </Suspense>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
         <Suspense
           fallback={
-            <div className="w-full h-full bg-gray-500/10 rounded-lg animate-pulse" />
+            <div className="w-full min-h-80 h-full bg-gray-500/10 rounded-lg animate-pulse" />
           }
         >
           <ProductsChart />
         </Suspense>
-
-        <Suspense fallback={<StockLevelsPlaceholder />}>
-          <StockLevels />
-        </Suspense>
-
         <Suspense
           fallback={
-            <div className="w-full h-full bg-gray-500/10 rounded-lg animate-pulse" />
+            <div className="w-full min-h-80 h-full bg-gray-500/10 rounded-lg animate-pulse" />
           }
         >
           <EfficiencyChart />
         </Suspense>
       </div>
+      <Suspense fallback={<StockLevelsPlaceholder />}>
+        <StockLevels />
+      </Suspense>
     </>
   )
 }

@@ -46,26 +46,21 @@ export const createProduct = async (formData: FormData) => {
     lowStockAt: formData.get('lowStockAt') || undefined,
   })
 
-  if (!parsed) {
-    // throw new Error('Invalid data, Validation failed')
-    console.log('Invalid data, Validation failed')
+  if (!parsed.success) {
+    console.error('Validation failed:', parsed.error.flatten().fieldErrors)
+    return { success: false, error: 'Invalid product data' }
   }
 
   try {
     await prisma.product.create({
       data: {
-        name: parsed.data?.name as string,
-        price: parsed.data?.price as number,
-        quantity: parsed.data?.quantity as number,
-        sku: parsed.data?.sku as string,
-        lowStockAt: parsed.data?.lowStockAt as number,
+        ...parsed.data,
         userId: user.id,
       },
     })
-
-    redirect('/inventory')
+    return { success: true, redirect: '/inventory' }
   } catch (error) {
-    // throw new Error('Failed to create a product')
-    console.log('Failed to create a product', error)
+    console.error('Failed to create product:', error)
+    return { success: false, error: 'Database error' }
   }
 }
